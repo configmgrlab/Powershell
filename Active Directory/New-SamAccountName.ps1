@@ -76,9 +76,11 @@ function New-SamAccountName {
 
     # Create SamAccountName
     $FirstName = $FirstName.Substring(0,$CharFirstName)
+    
     $LastName = $LastName.Substring(0,$CharLastName)
-
+    
     $SamAccount = $FirstName + $LastName
     
+    # Return SAMAccountName
     Write-Output $SamAccount
 }
