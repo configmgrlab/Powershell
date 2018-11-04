@@ -64,6 +64,10 @@ function New-SamAccountName {
     $SpecialChar['æ'] = 'ae'
     $SpecialChar['ø'] = 'oe'
 
+    # Set first and last name to low characters
+    $FirstName = $FirstName.ToLower()
+    $LastName = $LastName.ToLower()
+
     # Replace special characters in first name if it contains it
     $SpecialChar.Keys | ForEach-Object {$FirstName = $FirstName.Replace($_, $SpecialChar[$_])}
 
