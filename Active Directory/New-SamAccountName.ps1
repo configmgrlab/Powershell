@@ -6,7 +6,7 @@ Function for SAMAcountname creation
 Function will create SAMAccountname from first name and last name
 
 .PARAMETER FirstName
-Input parameter for fist name
+Input parameter for first name
 
 .PARAMETER LastName
 Input paramter for last name
@@ -21,11 +21,15 @@ Parameter for how many characters from last name should be used. NB maximum 3 ch
 New-SamAccountName -FirstName Søren -LastName Kjærsgård -CharFirstName 3 -CharLastName 3
 
 .NOTES
- Special danish letter will be replaced like this
-
- æ = ae
- ø = oe
- å = aa
+Version:        1.4
+Author:         Nicholai Kjærgaard
+Creation:       03/11/2018
+Purpose/Change: Synopsis changed.
+information:
+    Special danish letter will be replaced like this
+    æ = ae
+    ø = oe
+    å = aa
 
 #>
 function New-SamAccountName {
