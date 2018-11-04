@@ -1,3 +1,33 @@
+<#
+.SYNOPSIS
+Function for SAMAcountname creation
+
+.DESCRIPTION
+Function will create SAMAccountname from first name and last name
+
+.PARAMETER FirstName
+Input parameter for fist name
+
+.PARAMETER LastName
+Input paramter for last name
+
+.PARAMETER CharFirstName
+Parameter for how many characters from first name should be used. NB maximum 3 characters
+
+.PARAMETER CharLastName
+Parameter for how many characters from last name should be used. NB maximum 3 characters
+
+.EXAMPLE
+New-SamAccountName -FirstName Søren -LastName Kjærsgård -CharFirstName 3 -CharLastName 3
+
+.NOTES
+ Special danish letter will be replaced like this
+
+ æ = ae
+ ø = oe
+ å = aa
+
+#>
 function New-SamAccountName {
     param (
         # First Name insert
@@ -26,8 +56,6 @@ function New-SamAccountName {
 
     )
 
-    Write-Host $LastName
-
     # Create Hashtable
     $SpecialChar = @{}
 
@@ -42,13 +70,11 @@ function New-SamAccountName {
     # Replace special characters in last name if it contains it
     $SpecialChar.Keys | ForEach-Object {$LastName = $LastName.Replace($_, $SpecialChar[$_])}
 
-    Write-Host $LastName
-
     # Create SamAccountName
     $FirstName = $FirstName.Substring(0,$CharFirstName)
     $LastName = $LastName.Substring(0,$CharLastName)
 
-    #$SamAccount = $FirstName + $LastName
+    $SamAccount = $FirstName + $LastName
     
-    #Write-Output $SamAccount
+    Write-Output $SamAccount
 }
