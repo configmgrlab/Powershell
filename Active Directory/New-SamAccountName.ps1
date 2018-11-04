@@ -20,14 +20,17 @@ Parameter for how many characters from last name should be used. NB maximum 3 ch
 .EXAMPLE
 New-SamAccountName -FirstName Søren -LastName Kjærsgård -CharFirstName 3 -CharLastName 3
 
+.INPUTS
+System.String
+
 .OUTPUTS
 Function will return a string.
 
 .NOTES
-Version:        1.5
+Version:        1.6
 Author:         Nicholai Kjærgaard
 Creation:       03/11/2018
-Purpose/Change: Synopsis changed OUTPUTS added.
+Purpose/Change: Synopsis changed INPUTS added.
 information:
     Special danish letter will be replaced like this
     æ = ae
