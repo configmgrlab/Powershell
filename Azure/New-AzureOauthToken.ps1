@@ -83,7 +83,10 @@ function New-AzureOauthToken {
     $Tokenheader.Add('accept','application/json')
 
     # Token Request URL
-    $TokenUri = "https://login.microsoftonline.com/$TenantName/oauth2/token"
+    $TokenUri = switch ($ApiType) {
+        GraphApi {"https://login.microsoftonline.com/$($TenantName)/oauth2/v2.0/token"}
+        ManagementApi {"https://login.microsoftonline.com/$($TenantName)/oauth2/token"}
+    }
 
     # Get token
     $tokenRequest = Invoke-RestMethod -Method Post -Uri $TokenUri -Headers $Tokenheader -Body $Tokenbody
